@@ -1,3 +1,7 @@
+# MinehutBot
+Fork of [MeinBot](https://github.com/Meindo/meinbot) but with more options for pvp.<br> 
+
+original readme: 
 # MeinBot
 MeinBot is an intelligent ai that can do lots of things relevant to pvp in Minecraft.
 
