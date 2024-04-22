@@ -18,7 +18,8 @@ MeinBot has an variety of features, all listed here
 # Installation
 To install MeinBot simply clone or download the files in this repo and run the installer.
  ```sh
- ./installer.sh
+ ./installer.sh # on linux
+ ./installer.cmd # on windows
  ```
 NOTE: If the installer cant finish, simply install nodejs and run npm i.
 
