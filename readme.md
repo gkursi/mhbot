@@ -43,3 +43,7 @@ Minehut bot made to automatically play a server. (WIP)
     CHAT_RELAY="https://discord.com/api/webhooks/696969696/aaaaaaaaaaaaaaaaa/"
     ```
     This file must be located in the root of the repo's directory.
+
+## Credit
+- installer.sh + idea - [meinbot](https://github.com/Meindo/meinbot)
+- PvP library - [mineflayer-custom-pvp](https://github.com/nxg-org/mineflayer-custom-pvp/)
