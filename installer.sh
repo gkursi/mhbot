@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-
+# from meinbot
 if ! command -v node &> /dev/null
 then
     echo "Could not find NodeJS, please install NodeJS and rerun this script"

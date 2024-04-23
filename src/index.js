@@ -1,14 +1,15 @@
-// Todo: implement
-// bot.loadPlugin(require('mineflayer-pvp').plugin)
-// bot.loadPlugin(require('mineflayer-armor-manager'))
-// bot.loadPlugin(require('mineflayer-auto-eat').plugin)
-// bot.loadPlugin(require('mineflayer-pathfinder').pathfinder)
-
+require('dotenv').config()
 const mineflayer = require('mineflayer')
-const relay = process.env.CHAT_RELAY
 const XMLHttpRequest = require('xhr2');
 
-function discord_message(webHookURL, message, username, server) {
+// config
+const relay = process.env.CHAT_RELAY
+const logMode = process.env.LOG_MODE
+const logRelay = process.env.LOG_RELAY
+const debug = process.env.DEBUG == 'true'
+
+// chat relay / logs
+const discord_message = (webHookURL, message, username, server) => {
     var xhr = new XMLHttpRequest();
     xhr.open("POST", webHookURL, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
@@ -25,15 +26,51 @@ const bot = mineflayer.createBot({
   auth: 'microsoft'
 })
 
+const _log = (txt, ddebug=false) => {
+  if(txt=="") return
+  if(ddebug) {
+    console.log(`[DEBUG] ${txt}`);
+    return
+  }
+  switch (logMode) {
+    case 'all':
+      console.log(txt)
+      if(bot) bot.chat(txt);      
+      discord_message(logRelay, txt, "MinehutBot", "Logs")
+      break;
+    case 'webhook':
+      discord_message(logRelay, txt, "MinehutBot", "Logs")
+      break;
+    case 'console':
+      console.log(txt)
+      break;
+    case 'none':
+      break
+    default:
+      console.log(txt)
+      break;
+  }
+}
+// load plugins
+bot.loadPlugin(require('@nxg-org/mineflayer-custom-pvp/lib/index.js').default)
+bot.loadPlugin(require('mineflayer-armor-manager'))
+bot.loadPlugin(require('mineflayer-auto-eat').plugin)
+bot.loadPlugin(require('mineflayer-pathfinder').pathfinder)
+bot.loadPlugin(require('mineflayer-cmd').plugin)
 
 bot.on('chat', (username, message) => {
   if (username === bot.username) return
-  console.log(`${username}: ${message}`)
+  // _log(`${username}: ${message}`)
   if(relay) {
     discord_message(relay, message, username, "Chat Relay")
   }
 })
 
+bot.on("login", () => {_log("Logged in!")})
+bot.on("game", () => {
+  _log(debug ? "World loaded!" : "", true)
+})
+
 // Log errors and kick reasons:
-bot.on('kicked', console.log)
-bot.on('error', console.log)
+bot.on('kicked', _log)
+bot.on('error', _log)

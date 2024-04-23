@@ -29,11 +29,12 @@ Minehut bot made to automatically play a server. (WIP)
     - (Linux) open a terminal of choice, type `USERNAME="PUT MICROSOFT EMAIL HERE" node .`
 4. The bot should now be running.
 #### Configuring
-5. There are currently 2 things you can configure via env variables:
-    - Minecraft account
+5. There are 2 main things you might want to change
+    - Minecraft account email
     - Chat relay webhook url \
 5.1. The account email can be changed by setting the env variable "USERNAME". \
-5.2. The chat relay url can be changed by setting the env variable "CHAT_RELAY".
+5.2. The chat relay url can be changed by setting the env variable "CHAT_RELAY". \
+5.3. You can view all config values **[here](./wiki/config.md)**
 6. To avoid setting the variables each time manually, we can create a `.env` file and change all values there.
 6.1 Example file: \
 **.env**
