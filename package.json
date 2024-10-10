@@ -10,8 +10,10 @@
   "license": "MIT",
   "dependencies": {
     "@nxg-org/mineflayer-custom-pvp": "^1.7.2",
+    "blessed": "^0.1.81",
     "debug": "^4.3.4",
     "dotenv": "^16.4.5",
+    "minecraft-data":"^3.67.0",
     "mineflayer": "^4.20.1",
     "mineflayer-armor-manager": "2.0.1",
     "mineflayer-auto-eat": "3.3.6",

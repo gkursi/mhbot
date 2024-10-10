@@ -11,10 +11,10 @@ node -v >nul 2>&1 && (
 npm -v >nul 2>&1 && (
     echo found npm
     npm install
-    echo [-------------------------------------------------------------]
+    echo [======================================================================]
     echo Installation complete!
     echo If something doesn't work, check the above output for errors.
-    echo [-------------------------------------------------------------]
+    echo [======================================================================]
     echo Press any key to exit..
     pause >nul
     exit /b 0
